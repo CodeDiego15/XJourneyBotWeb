@@ -2,14 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import About from '../components/About.astro';
-
+import Server from '../components/ServerCount.astro';
+import Notice from '../components/Notice.astro';
+import Timer from '../components/Timer.astro'
+import FooterPage from '../components/FooterPage.astro'
 ---
 
 <Layout title="XJourneyBot">
   <main>
-	<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(244,114,182,0.3),rgba(255,255,255,0))]"></div>
-    <Header />    
+    <div class="absolute top-0 z-[-2] h-screen w-screen  bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(244,114,182,0.3),rgba(255,255,255,0))]"></div>   
     <About />
+    <Server />
+    <Notice />
+    <Timer />
+
   </main>
 </Layout>
 
