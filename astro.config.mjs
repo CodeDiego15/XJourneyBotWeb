@@ -13,6 +13,8 @@ export default defineConfig({
       dest: '/api/getServerCount.js'
     }]
   },
-  output: "server",
-  adapter: vercel()
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
 });
