@@ -5,7 +5,7 @@ export default {
 		extend: {
 			extend: {
 				colors: {
-				  'pink-400': '#EC4899',
+				  
 				},
 			  },
 		},

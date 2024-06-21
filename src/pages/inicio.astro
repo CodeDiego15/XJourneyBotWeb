@@ -6,12 +6,15 @@ import Server from '../components/ServerCount.astro';
 import Notice from '../components/Notice.astro';
 import Timer from '../components/Timer.astro'
 import FooterPage from '../components/FooterPage.astro'
+import ServerCount from '../components/ServerCount.astro';
+import Smoke from '../components/Smoke.astro';
 ---
 
 <Layout title="XJourneyBot">
   <main>
-    <div class="absolute top-0 z-[-2] h-screen w-screen  bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(244,114,182,0.3),rgba(255,255,255,0))]"></div>   
+    <!--<div class="absolute top-0 z-[-2] h-screen w-screen bg-transparent bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(244,114,182,0.3),rgba(255,255,255,0))]"></div>   --> 
     <About />
+    <Smoke />
     <Server />
     <Notice />
     <Timer />

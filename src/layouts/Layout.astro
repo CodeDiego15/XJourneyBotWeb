@@ -8,6 +8,7 @@ import FooterPage from '../components/FooterPage.astro';
 import Header from '../components/Header.astro';
 
 import '@fontsource-variable/dm-sans';
+import Smoke from '../components/Smoke.astro';
 ---
 
 <!doctype html>
@@ -21,6 +22,7 @@ import '@fontsource-variable/dm-sans';
 		<title>{title}</title>
 	</head>
 	<body class="">
+		<Smoke />
 		<Header />
 		<slot />
 		<FooterPage />

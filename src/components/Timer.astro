@@ -1,40 +1,83 @@
-<div class="text-white text-center">
-    <h1 class="text-4xl font-bold mb-4">Bot Disponible en: <p id="countdown" class="text-4xl text-pink-400"></p></h1>
-    
+---
+const TIMESTAMP_END = 1719898223
+---
+<section class="my-32 flex flex-col gap-y-10 justify-center items-center">
+
+    <img class="size-20 rounded-xl" src="./descarga.gif" alt="">
+
+    <div class="text-white" data-date={TIMESTAMP_END}>
+    <div > 
+        <span data-days>00</span>
+        <span>Dias</span>
+       
+    </div>
+    <div >
+        <span data-hours>00</span>
+        <span >Horas</span>
+        
+    </div>
+    <div >
+        <span data-minutes>00</span>
+        <span>Minutos</span>
+        
+    </div>
+    <div> 
+        <span data-seconds>00</span>
+        <span >Segundos</span>
+       
+    </div>
 </div>
+
+</section>
+
+
 <script>
-    // Set the date we're counting down to
-    var countDownDate = new Date().getTime() + 7*24*60*60*1000; // 7 days from now
+    const SECOND = 1000
+    const MINUTE = SECOND * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
 
-    // Update the count down every 1 second
-    var countdownFunction = setInterval(function() {
+    function init(){
+        
+        const $countdate = document.querySelector('[data-date]')
+        if(!$countdate) return
 
-        // Get today's date and time
-        var now = new Date().getTime();
+        const $days = document.querySelector('[data-days]')
+        const $hours = document.querySelector('[data-hours]')
+        const $minutes = document.querySelector('[data-minutes]')
+        const $seconds = document.querySelector('[data-seconds]')
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+        const timestamp = $countdate.getAttribute('data-date')
+        if(!timestamp) return
+        const date = new Date(+timestamp).getTime()
+        const fornatTime = (time: number) => {
+            return Math.floor(time).toString().padStart(2, "0")
+        } 
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Check if the element exists before trying to access its properties
-        var countdownElement = document.getElementById("countdown");
-        if (countdownElement) {
-            // Display the result in the element with id="countdown"
-            countdownElement.innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-        }
+        function updateCountDown(){
+            const now = Date.now()
+            const diff = date - now
 
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(countdownFunction);
-            if (countdownElement) {
-                countdownElement.innerHTML = "EXPIRED";
+            if($days instanceof HTMLElement){
+                $days.innerText = fornatTime(diff / DAY)
             }
+            if($hours instanceof HTMLElement){
+                $hours.innerText = fornatTime((diff % DAY) / HOUR)
+            }
+            if($minutes instanceof HTMLElement){
+                $minutes.innerText = fornatTime((diff % HOUR) / MINUTE)
+            }
+            if($seconds instanceof HTMLElement){
+                $seconds.innerText = fornatTime((diff % MINUTE) / SECOND)
+            }
+            
+
         }
-    }, 1000);
+
+        setInterval(updateCountDown, SECOND)
+        
+        }
+    init()
+    
 </script>
